@@ -7,14 +7,10 @@ name = "envvars"
 dynamic = ["version"]
 authors = [{name="Max Greco", email="mmngreco@gmail.com"}]
 readme = "README.md"
-requires-python = ">=3.6"
-dependencies = ["rich", "typer", "pandas"]
+requires-python = ">=3.9"
+dependencies = []
 license = {file = "LICENSE"}
-description = "envvars is a CLI tool for tracking time."
-
-
-[project.scripts]
-envvars = "envvars:app"
+description = "Manage envvars with ease."
 
 
 [tool.setuptools_scm]
