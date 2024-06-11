@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=60", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "envvars"
+dynamic = ["version"]
+authors = [{name="Max Greco", email="mmngreco@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.6"
+dependencies = ["rich", "typer", "pandas"]
+license = {file = "LICENSE"}
+description = "envvars is a CLI tool for tracking time."
+
+
+[project.scripts]
+envvars = "envvars:app"
+
+
+[tool.setuptools_scm]
