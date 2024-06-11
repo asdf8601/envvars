@@ -1,3 +1,4 @@
+from collections.abc import Callable
 import os
 from typing import Any, Type
 
@@ -16,11 +17,11 @@ class Var:
         key: str,
         value: Any = None,
         default: Any = None,
-        dtype: Type = str,
+        dtype: Type | Callable = str,
         doc: str = "",
     ):
         self.key = key
-        self.value = dtype(value)
+        self.value = value
         self.default = default
         self.dtype = dtype
         self.doc = doc
@@ -28,8 +29,9 @@ class Var:
     def __str__(self) -> str:
         return f"{self.key}={self.value}, {self.doc}"
 
-    def __hash__(self):
-        return hash(self.key)
+    def __eq__(self, other):
+        return self.key == other.key and self.value == other.value
+
 
 
 class EnvVars:
@@ -68,7 +70,7 @@ class EnvVars:
         return value
 
     @classmethod
-    def str(cls) -> str:
+    def to_str(cls) -> str:
         out = [cls.header]
         for _, value in cls.values.items():
             out += [f"    {value}"]
